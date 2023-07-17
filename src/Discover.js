@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CurrentTrending from "./CurrentTrending";
 import MostLoved from "./MostLoved";
 
+
 export default function Discover() {
   const [currentTrending, setCurrentTrending] = useState([]);
   const [mostLoved, setMostLoved] = useState([]);
@@ -21,6 +22,7 @@ export default function Discover() {
       .then((response) => response.json())
       .then((data) => setMostLoved(data.loved));
   }, []);
+
 
   return (
     <div>
