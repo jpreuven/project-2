@@ -6,8 +6,6 @@ export default function ArtistPage({ currentArtist }) {
   const [topTrackData, setTopTrackData] = useState([]);
   const [albums, setAlbums] = useState([]);
   const param = useParams();
-  // console.log(param.id);
-  //   console.log(currentArtist);
 
   useEffect(() => {
     fetch(
