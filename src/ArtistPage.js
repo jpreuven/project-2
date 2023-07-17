@@ -58,6 +58,7 @@ export default function ArtistPage({ currentArtist }) {
       />
     );
   });
+  console.log("hello");
 
   return (
     <div>
