@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function ArtistPage({ currentArtist }) {
-  const [data, setData] = useState({});
+export default function ArtistPage({ data, setData, handleRandom }) {
+  //   const [data, setData] = useState({});
   const [topTrackData, setTopTrackData] = useState([]);
   const [albums, setAlbums] = useState([]);
+  const [count, setCount] = useState(0);
   const param = useParams();
 
   useEffect(() => {
@@ -13,54 +14,80 @@ export default function ArtistPage({ currentArtist }) {
     )
       .then((r) => r.json())
       .then((data) => {
-        setData(data.artists[0]);
-        let arr = data.artists[0].strArtist;
-        arr = arr.split(" ");
-        arr = arr.join("%20");
+        if (data.artists !== null) {
+          setData(data.artists[0]);
+          let arr = data.artists[0].strArtist;
+          arr = arr.split(" ");
+          arr = arr.join("%20");
 
-        fetch(
-          `https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=${arr}`
-        )
-          .then((r) => r.json())
-          .then((data) => setTopTrackData(data.track));
+          fetch(
+            `https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=${arr}`
+          )
+            .then((r) => r.json())
+            .then((data) => setTopTrackData(data.track));
 
-        fetch(
-          `https://theaudiodb.com/api/v1/json/523532/album.php?i=${param.id}`
-        )
-          .then((r) => r.json())
-          .then((data) => {
-            const albumArr = data.album.filter((album) => {
-              if (album.strReleaseFormat === "Album") {
-                return album;
+          fetch(
+            `https://theaudiodb.com/api/v1/json/523532/album.php?i=${param.id}`
+          )
+            .then((r) => r.json())
+            .then((data) => {
+              if (data.album !== null) {
+                const albumArr = data.album.filter((album) => {
+                  if (album.strReleaseFormat === "Album") {
+                    return album;
+                  } else {
+                    return false;
+                  }
+                });
+                setAlbums(albumArr);
               } else {
-                return false;
+                setAlbums(false);
               }
             });
-            setAlbums(albumArr);
-          });
+        } else {
+          setData(false);
+        }
       });
-  }, []);
+  }, [count]);
 
-  const trackList = topTrackData.map((track) => {
-    return (
-      <div key={track.idTrack} style={{ textAlign: "left" }}>
-        {track.strTrack} on {track.strAlbum}
-      </div>
-    );
-  });
+  let trackList = [];
 
-  const albumList = albums.map((album) => {
-    return (
-      <img
-        key={album.idAlbum}
-        src={album.strAlbumThumb}
-        style={{ width: "150px" }}
-      />
-    );
-  });
-  console.log("hello");
+  if (topTrackData !== null) {
+    trackList = topTrackData.map((track) => {
+      return (
+        <div key={track.idTrack} style={{ textAlign: "left" }}>
+          {track.strTrack} on {track.strAlbum}
+        </div>
+      );
+    });
+  } else {
+    trackList = [
+      <div key={Math.random()} style={{ textAlign: "left" }}>
+        No top tracks found!
+      </div>,
+    ];
+  }
 
-  return (
+  let albumList = [];
+
+  if (albums !== false) {
+    albumList = albums.map((album) => {
+      return (
+        <img
+          key={album.idAlbum}
+          src={album.strAlbumThumb}
+          style={{ width: "150px" }}
+        />
+      );
+    });
+  }
+
+  function onClick() {
+    handleRandom();
+    setCount(count + 1);
+  }
+
+  return data ? (
     <div>
       <h1>{data.strArtist}</h1>
       <img src={data.strArtistBanner} />
@@ -68,7 +95,7 @@ export default function ArtistPage({ currentArtist }) {
         <div className="row">
           <div className="col-md-8">
             Albums
-            <ul>{albumList}</ul>
+            {albums ? <ul>{albumList}</ul> : <p>No albums found!</p>}
           </div>
           <div className="col-md-4">
             Top Tracks
@@ -82,6 +109,11 @@ export default function ArtistPage({ currentArtist }) {
           </div>
         </div>
       </div>
+    </div>
+  ) : (
+    <div>
+      <h1>It appears something has gone wrong...</h1>
+      <button onClick={onClick}>Try again!</button>
     </div>
   );
 }
