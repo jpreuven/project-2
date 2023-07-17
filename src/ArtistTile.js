@@ -1,7 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function ArtistTile({ currentArtist }) {
-  console.log(currentArtist);
+  function handleClick() {
+    history.push(`/artist/${currentArtist.idArtist}`);
+  }
+
+  const history = useHistory();
+
   if (currentArtist) {
     return (
       <div className="container">
@@ -13,6 +19,7 @@ export default function ArtistTile({ currentArtist }) {
             <img
               style={{ width: "100px" }}
               src={`${currentArtist.strArtistCutout}`}
+              onClick={handleClick}
             />
           </div>
           <div className="col-md-2 d-flex align-items-center justify-content-left">

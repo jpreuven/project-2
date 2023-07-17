@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import AlbumList from "./AlbumList";
 import ArtistTile from "./ArtistTile";
 
-export default function SearchResult() {
-  const [currentArtist, setCurrentArtist] = useState(null);
+export default function SearchResult({ currentArtist, setCurrentArtist }) {
+  //   const [currentArtist, setCurrentArtist] = useState(null);
   const param = useParams();
 
   useEffect(() => {

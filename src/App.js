@@ -9,6 +9,7 @@ import SearchResult from "./SearchResult";
 
 function App() {
   const [data, setData] = useState([]);
+  const [currentArtist, setCurrentArtist] = useState(null);
 
   useEffect(() => {
     fetch(
@@ -17,12 +18,6 @@ function App() {
       .then((r) => r.json())
       .then((data) => setData(data.loved));
   }, []);
-
-  // console.log(data);
-
-  // function handleSearch(e) {
-  //   setSearch(e);
-  // }
 
   function handleSubmit(e) {
     console.log(e);
@@ -40,10 +35,13 @@ function App() {
           <Discover data={data} />
         </Route>
         <Route exact path="/artist/:id">
-          <ArtistPage />
+          <ArtistPage currentArtist={currentArtist} />
         </Route>
         <Route exact path="/SearchResult/:result">
-          <SearchResult />
+          <SearchResult
+            currentArtist={currentArtist}
+            setCurrentArtist={setCurrentArtist}
+          />
         </Route>
         <Route exact path="/">
           <Home handleSubmit={handleSubmit} />

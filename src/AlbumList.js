@@ -12,7 +12,6 @@ export default function AlbumList({}) {
     )
       .then((r) => r.json())
       .then((data) => {
-        console.log(data);
         if (data.album !== null) {
           const albumsToDisplay = data.album.filter((album) => {
             if (album.strReleaseFormat === "Album") {
