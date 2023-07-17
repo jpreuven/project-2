@@ -30,7 +30,6 @@ export default function ArtistTile({ currentArtist }) {
                   </p>
                   <p style={{ textAlign: "left" }}>
                     <span
-                      // className="d-block"
                       style={{
                         textOverflow: "ellipsis",
                         display: "-webkit-box",

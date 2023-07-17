@@ -4,7 +4,7 @@ import AlbumList from "./AlbumList";
 import ArtistTile from "./ArtistTile";
 
 export default function SearchResult() {
-  const [currentArtist, setCurrentArtist] = useState([]);
+  const [currentArtist, setCurrentArtist] = useState(null);
   const param = useParams();
 
   useEffect(() => {
@@ -16,11 +16,6 @@ export default function SearchResult() {
         if (data.artists !== null) {
           setCurrentArtist(data.artists[0]);
         } else {
-          //   let noArtist = {
-          //     strGenre: "blah",
-          //     strCountry: "blah",
-          //     strBiographyEN: "blah",
-          //   };
           setCurrentArtist(false);
         }
       })
@@ -29,18 +24,8 @@ export default function SearchResult() {
       });
   }, []);
 
-  //   if (
-  //     currentArtist ===
-  //     "this is a random error message that no one will stumble upon"
-  //   ) {
-  //     console.log("error");
-  //     return <div>wrong!!</div>;
-  //   } else {
   return (
     <div>
-      {/* <div style={{ maxWidth: "25%" }}>
-        <h1>Artists:</h1>
-      </div> */}
       <ArtistTile currentArtist={currentArtist} />
 
       <AlbumList param={param} currentArtist={currentArtist} />

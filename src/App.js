@@ -9,7 +9,6 @@ import SearchResult from "./SearchResult";
 
 function App() {
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch(
@@ -21,9 +20,9 @@ function App() {
 
   // console.log(data);
 
-  function handleSearch(e) {
-    setSearch(e);
-  }
+  // function handleSearch(e) {
+  //   setSearch(e);
+  // }
 
   function handleSubmit(e) {
     console.log(e);
@@ -40,18 +39,14 @@ function App() {
         <Route path="/discover">
           <Discover data={data} />
         </Route>
-        <Route path="/SearchResult/:result">
-          <SearchResult search={search} />
-        </Route>
-        <Route path="/:artist">
+        <Route exact path="/artist/:id">
           <ArtistPage />
         </Route>
+        <Route exact path="/SearchResult/:result">
+          <SearchResult />
+        </Route>
         <Route exact path="/">
-          <Home
-            search={search}
-            handleSearch={handleSearch}
-            handleSubmit={handleSubmit}
-          />
+          <Home handleSubmit={handleSubmit} />
         </Route>
       </Switch>
     </div>
