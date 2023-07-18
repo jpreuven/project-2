@@ -6,10 +6,16 @@ import ArtistPage from "./ArtistPage";
 import { Route, Switch } from "react-router-dom";
 import Discover from "./Discover";
 import SearchResult from "./SearchResult";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
   const [data, setData] = useState([]);
   const [currentArtist, setCurrentArtist] = useState(null);
+  const [artistData, setArtistData] = useState({});
+
+  console.log(artistData);
+
+  const history = useHistory();
 
   useEffect(() => {
     fetch(
@@ -21,6 +27,12 @@ function App() {
 
   function handleSubmit(e) {
     console.log(e);
+  }
+
+  function handleRandom() {
+    let randomNumber =
+      Math.floor(Math.random() * (176070 - 111233 + 1)) + 111233;
+    history.push(`/artist/${randomNumber}`);
   }
 
   return (
@@ -35,7 +47,11 @@ function App() {
           <Discover data={data} />
         </Route>
         <Route exact path="/artist/:id">
-          <ArtistPage currentArtist={currentArtist} />
+          <ArtistPage
+            data={artistData}
+            setData={setArtistData}
+            handleRandom={handleRandom}
+          />
         </Route>
         <Route exact path="/SearchResult/:result">
           <SearchResult
@@ -44,7 +60,11 @@ function App() {
           />
         </Route>
         <Route exact path="/">
-          <Home handleSubmit={handleSubmit} />
+          <Home
+            artistData={artistData}
+            handleSubmit={handleSubmit}
+            handleRandom={handleRandom}
+          />
         </Route>
       </Switch>
     </div>
