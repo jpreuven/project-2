@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import "./ArtistPage.css";
 
 export default function ArtistPage({ data, setData, handleRandom }) {
-  //   const [data, setData] = useState({});
   const [topTrackData, setTopTrackData] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [count, setCount] = useState(0);
+  const [commentSection, setCommentSection] = useState([]);
+  const [commentInput, setCommentInput] = useState("");
   const param = useParams();
 
   useEffect(() => {
@@ -50,6 +52,21 @@ export default function ArtistPage({ data, setData, handleRandom }) {
       });
   }, [count]);
 
+  useEffect(() => {
+    fetch(`http://localhost:3000/comments`)
+      .then((r) => r.json())
+      .then((d) => {
+        let artistList = d.filter((comment) => {
+          if (comment.artistID == param.id) {
+            return comment;
+          } else {
+            return false;
+          }
+        });
+        setCommentSection(artistList);
+      });
+  }, []);
+
   let trackList = [];
 
   if (topTrackData !== null) {
@@ -87,6 +104,33 @@ export default function ArtistPage({ data, setData, handleRandom }) {
     setCount(count + 1);
   }
 
+  function handleSubmitComment(e) {
+    e.preventDefault();
+
+    const newObj = {
+      comment: commentInput,
+      artistID: Number(data.idArtist),
+    };
+
+    fetch(`http://localhost:3000/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newObj),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        setCommentSection([...commentSection, data]);
+      });
+
+    setCommentInput("");
+  }
+
+  let commentsToDisplay = commentSection.map((comment) => {
+    return <p key={comment.id}>{comment.comment}</p>;
+  });
+
   return data ? (
     <div>
       <h1>{data.strArtist}</h1>
@@ -108,6 +152,18 @@ export default function ArtistPage({ data, setData, handleRandom }) {
             </div>
           </div>
         </div>
+      </div>
+      <form onSubmit={handleSubmitComment}>
+        <textarea
+          className="comment-input"
+          value={commentInput}
+          onChange={(e) => setCommentInput(e.target.value)}
+        ></textarea>
+        <button type="submit">Submit Comment</button>
+      </form>
+      <div className="comment-section">
+        <strong>Comment Section</strong>
+        <ul>{commentsToDisplay}</ul>
       </div>
     </div>
   ) : (

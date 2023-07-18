@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Home({ artistData, handleRandom }) {
   const [search, setSearch] = useState("");
-  console.log(artistData);
+  //   console.log(artistData);
 
   function onChange(e) {
     setSearch(e.target.value);
@@ -20,16 +20,6 @@ export default function Home({ artistData, handleRandom }) {
       alert("You gotta search for something!");
     }
   }
-
-  //   function handleRandom() {
-  //     let randomNumber =
-  //       Math.floor(Math.random() * (176070 - 111233 + 1)) + 111233;
-  //     console.log(randomNumber);
-  //     if (artistData) {
-  //       console.log(artistData === {});
-  //       history.push(`/artist/${randomNumber}`);
-  //     }
-  //   }
 
   return (
     <div>
