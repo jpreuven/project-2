@@ -36,11 +36,18 @@ function App() {
   }
 
   return (
-    <div className="App Container">
+    <div
+      className="App Container"
+      style={{
+        background: "	rgb(20,20,20)",
+        height: "100vh",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <div className="row d-flex justify-content-center">
-        <div className="col-md-4 mb-5 mt-5">
-          <Navbar />
-        </div>
+        {/* <div className="col-md-4 mb-5 mt-5"> */}
+        <Navbar />
+        {/* </div> */}
       </div>
       <Switch>
         <Route path="/discover">

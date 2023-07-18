@@ -10,6 +10,8 @@ export default function ArtistPage({ data, setData, handleRandom }) {
   const [commentInput, setCommentInput] = useState("");
   const param = useParams();
 
+  console.log(window.innerHeight);
+
   useEffect(() => {
     fetch(
       `https://www.theaudiodb.com/api/v1/json/523532/artist.php?i=${param.id}`
@@ -132,7 +134,11 @@ export default function ArtistPage({ data, setData, handleRandom }) {
   });
 
   return data ? (
-    <div>
+    <div
+      style={{
+        background: "	rgb(20,20,20)",
+      }}
+    >
       <h1>{data.strArtist}</h1>
       <img src={data.strArtistBanner} />
       <div className="container">
