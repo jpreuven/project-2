@@ -1,28 +1,21 @@
-// CurrentTrending.js
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 
-export default function CurrentTrending() {
-  const [trendingTracks, setTrendingTracks] = useState([]);
+export default function CurrentTrending({ data }) {
+  const history = useHistory();
 
-  useEffect(() => {
-    const fetchTrendingTracks = () => {
-      fetch(
-        "https://theaudiodb.com/api/v1/json/523532/trending.php?country=us&type=itunes&format=singles"
-      )
-        .then((response) => response.json())
-        .then((data) => setTrendingTracks(data.trending || []))
-        .catch((error) => {
-          console.error("Error fetching trending tracks:", error);
-        });
-    };
-
-    fetchTrendingTracks();
-  }, []);
+  const handleArtistClick = (artistId) => {
+    history.push(`/artist/${artistId}`);
+  };
 
   return (
     <div className="track-container">
-      {trendingTracks.map((track) => (
-        <div key={track.idTrack} className="track-item">
+      {data.map((track) => (
+        <div
+          key={track.idTrack}
+          className="track-item"
+          onClick={() => handleArtistClick(track.idArtist)} // Add onClick event handler
+        >
           <img
             src={track.strTrackThumb || track.strArtistThumb}
             alt={track.strTrack}

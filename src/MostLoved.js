@@ -1,8 +1,9 @@
-// MostLoved.js
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function MostLoved({ data }) {
   const [artistImages, setArtistImages] = useState({});
+  const history = useHistory();
 
   useEffect(() => {
     const fetchArtistImages = () => {
@@ -33,14 +34,22 @@ export default function MostLoved({ data }) {
     fetchArtistImages();
   }, [data]);
 
+  const handleClick = (artistId) => {
+    history.push(`/artist/${artistId}`);
+  };
+
   return (
-    <div className="track-container">
+    <div className="track-container most-loved">
       {data.map((track) => (
-        <div key={track.idTrack} className="track-item">
+        <div
+          key={track.idTrack}
+          className="track-item"
+          onClick={() => handleClick(track.idArtist)}
+        >
           <img
             src={track.strTrackThumb || artistImages[track.strArtist]}
             alt={track.strTrack}
-            style={{ width: "375px", height: "375px" }}
+            style={{ width: "350px", height: "350px" }}
           />
           <div className="track-info">
             <h3>{track.strTrack}</h3>

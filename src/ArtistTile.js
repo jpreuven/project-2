@@ -9,6 +9,8 @@ export default function ArtistTile({ currentArtist }) {
   const history = useHistory();
 
   if (currentArtist) {
+    const artistImage = currentArtist.strArtistCutout || currentArtist.strArtistThumb;     
+    // added strArtistThumb as a fallback for strArtistCutout
     return (
       <div className="container">
         <div style={{ maxWidth: "10%" }}>
@@ -18,7 +20,8 @@ export default function ArtistTile({ currentArtist }) {
           <div className="col-md-2">
             <img
               style={{ width: "100px" }}
-              src={`${currentArtist.strArtistCutout}`}
+              src={artistImage}
+              alt={currentArtist.strArtist}     /* changed alt configuration to accomidate fallback */
               onClick={handleClick}
             />
           </div>
