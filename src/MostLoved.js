@@ -1,3 +1,4 @@
+// MostLoved.js
 import React, { useEffect, useState } from "react";
 
 export default function MostLoved({ data }) {
@@ -33,18 +34,19 @@ export default function MostLoved({ data }) {
   }, [data]);
 
   return (
-    <div>
+    <div className="track-container">
       {data.map((track) => (
-        <div key={track.idTrack}>
-          <h3>{track.strTrack}</h3>
-          <p>Artist: {track.strArtist}</p>
-          <p>Album: {track.strAlbum}</p>
+        <div key={track.idTrack} className="track-item">
           <img
             src={track.strTrackThumb || artistImages[track.strArtist]}
             alt={track.strTrack}
-            style={{ width: "200px", height: "200px" }}
+            style={{ width: "375px", height: "375px" }}
           />
-          <hr />
+          <div className="track-info">
+            <h3>{track.strTrack}</h3>
+            <p>Artist: {track.strArtist}</p>
+            <p>Album: {track.strAlbum}</p>
+          </div>
         </div>
       ))}
     </div>

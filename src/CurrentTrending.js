@@ -1,3 +1,4 @@
+// CurrentTrending.js
 import React, { useEffect, useState } from "react";
 
 export default function CurrentTrending() {
@@ -19,18 +20,19 @@ export default function CurrentTrending() {
   }, []);
 
   return (
-    <div>
+    <div className="track-container">
       {trendingTracks.map((track) => (
-        <div key={track.idTrack}>
-          <h3>{track.strTrack}</h3>
-          <p>Artist: {track.strArtist}</p>
-          <p>Album: {track.strAlbum}</p>
+        <div key={track.idTrack} className="track-item">
           <img
             src={track.strTrackThumb || track.strArtistThumb}
             alt={track.strTrack}
-            style={{ width: "200px", height: "200px" }}
+            style={{ width: "375px", height: "375px" }}
           />
-          <hr />
+          <div className="track-info">
+            <h3>{track.strTrack}</h3>
+            <p>Artist: {track.strArtist}</p>
+            <p>Album: {track.strAlbum}</p>
+          </div>
         </div>
       ))}
     </div>
