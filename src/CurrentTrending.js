@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 export default function CurrentTrending({ data }) {
+  console.log(data);
   const history = useHistory();
 
   const handleArtistClick = (artistId) => {

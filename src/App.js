@@ -13,7 +13,7 @@ function App() {
   const [currentArtist, setCurrentArtist] = useState(null);
   const [artistData, setArtistData] = useState({});
 
-  console.log(artistData);
+  // console.log(artistData);
 
   const history = useHistory();
 
