@@ -39,9 +39,8 @@ function App() {
     <div
       className="App Container"
       style={{
-        background: "	rgb(20,20,20)",
-        height: "100vh",
-        backgroundAttachment: "fixed",
+       // background: "	rgb(20,20,20)",
+       // height: "100vh",
       }}
     >
       <div className="row d-flex justify-content-center">
@@ -62,6 +61,11 @@ function App() {
         </Route>
         <Route exact path="/SearchResult/:result">
           <SearchResult
+            style={{
+              background: "	rgb(20,20,20)",
+              height: "100%",
+            }}
+            className="mt-5"
             currentArtist={currentArtist}
             setCurrentArtist={setCurrentArtist}
           />

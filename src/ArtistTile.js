@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 export default function ArtistTile({ currentArtist }) {
   function handleClick() {
@@ -9,36 +9,37 @@ export default function ArtistTile({ currentArtist }) {
   const history = useHistory();
 
   if (currentArtist) {
-    const artistImage = currentArtist.strArtistCutout || currentArtist.strArtistThumb;     
-    // added strArtistThumb as a fallback for strArtistCutout
+    const artistImage =
+      currentArtist.strArtistCutout || currentArtist.strArtistThumb;
+
     return (
-      <div className="container">
-        <div style={{ maxWidth: "10%" }}>
-          <h1>Artists:</h1>
-        </div>
+      <div className="container" style={{ marginTop: "200px", background: "rgb(20,20,20)", height: "100%",}}>
         <div className="row">
           <div className="col-md-2">
+            <h1 style={{ marginBottom: "10px", }}>Artists:</h1>
             <img
-              style={{ width: "100px" }}
+              style={{ width: "300px", height: "300px", cursor: "pointer" }}
               src={artistImage}
-              alt={currentArtist.strArtist}     /* changed alt configuration to accomidate fallback */
+              alt={currentArtist.strArtist}
               onClick={handleClick}
             />
           </div>
-          <div className="col-md-2 d-flex align-items-center justify-content-left">
-            <h1>{currentArtist.strArtist}</h1>
-          </div>
-          <div className="col-md-4 justify-content-left">
+          <div className="col-md-4" style= {{marginLeft: "100px"}}>
             <div className="container">
               <div className="row">
                 <div className="justify-content-left">
-                  <p style={{ textAlign: "left" }}>
-                    Genre: {`${currentArtist.strGenre}`}
+                  {/* strArtist heading */}
+                  <h1>{currentArtist.strArtist}</h1>
+                  <p style={{ textAlign: "left", }}>
+                    <strong style={{ fontSize: "18px" }}>Genre:</strong>{" "}
+                    {`${currentArtist.strGenre}`}
                   </p>
                   <p style={{ textAlign: "left" }}>
-                    Country: {`${currentArtist.strCountry}`}
+                    <strong style={{ fontSize: "18px" }}>Country:</strong>{" "}
+                    {`${currentArtist.strCountry}`}
                   </p>
                   <p style={{ textAlign: "left" }}>
+                    <strong style={{ fontSize: "18px" }}>Bio:</strong>{" "}
                     <span
                       style={{
                         textOverflow: "ellipsis",
@@ -48,7 +49,7 @@ export default function ArtistTile({ currentArtist }) {
                         overflow: "hidden",
                       }}
                     >
-                      Bio: {`${currentArtist.strBiographyEN}`}
+                      {`${currentArtist.strBiographyEN}`}
                     </span>
                   </p>
                 </div>

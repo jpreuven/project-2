@@ -27,21 +27,24 @@ export default function Home({ artistData, handleRandom }) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        height: "65vh",
+        height: "100vh",
+        
       }}
     >
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "center", // Center the text horizontally
+          justifyContent: "center",
+           // Center the text horizontally
         }}
       >
         <h1
           style={{
             fontSize: "130px",
             fontFamily: "Helvetica, Arial, sans-serif",
-            textAlign: "center", // Center the text horizontally
+            textAlign: "center", 
+            marginTop: "-300px", // Center the text horizontally
           }}
         >
           Musicle
@@ -49,7 +52,7 @@ export default function Home({ artistData, handleRandom }) {
         <img
           src="https://i.ibb.co/cYsr5jx/DALL-E-2023-07-19-22-11-24-can-you-make-its-color-instead-of-yellow-the-rgb-value-of-69-208-255.png"
           alt="Musicle Logo"
-          style={{ width: "100px", height: "100px", marginLeft: "25px" }}
+          style={{ width: "100px", height: "100px", marginLeft: "25px", marginTop: "-300px",}}
         />
       </div>
       <form onSubmit={onSubmit}>
@@ -72,6 +75,7 @@ export default function Home({ artistData, handleRandom }) {
               borderRadius: "5px",
               textAlign: "center",
               border: "none",
+              marginTop: "-75px",
             }}
           />
         </div>
