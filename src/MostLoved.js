@@ -13,7 +13,7 @@ export default function MostLoved({ data, isLoading }) {
     return (
       <div className="loading-container">
         <img
-          src="https://i.pinimg.com/originals/3d/6a/a9/3d6aa9082f3c9e285df9970dc7b762ac.gif"
+          src="https://i.pinimg.com/originals/36/3c/2e/363c2ec45f7668e82807a0c053d1e1d0.gif"
           alt="Loading"
           className="loading-gif"
         />
@@ -34,7 +34,6 @@ export default function MostLoved({ data, isLoading }) {
               track.strTrackThumb ||
               "https://static.vecteezy.com/system/resources/thumbnails/008/695/917/small_2x/no-image-available-icon-simple-two-colors-template-for-no-image-or-picture-coming-soon-and-placeholder-illustration-isolated-on-white-background-vector.jpg"
             }
-            // src={track.strTrackThumb}
             alt={track.strTrack}
             style={{ width: "350px", height: "350px" }}
           />
