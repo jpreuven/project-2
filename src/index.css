@@ -5,10 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Additional styles for other elements if needed */
 }
 
+div.row.d-flex.justify-content-center {
+  margin-right: 0rem; 
+  margin-left: 0rem; 
+}
 /* html,
 body {
   height: 100%;

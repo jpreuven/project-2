@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Home({ artistData, handleRandom }) {
   const [search, setSearch] = useState("");
-  //   console.log(artistData);
 
   function onChange(e) {
     setSearch(e.target.value);
@@ -31,57 +30,107 @@ export default function Home({ artistData, handleRandom }) {
         height: "65vh",
       }}
     >
-      <h1 style={{ fontSize: "130px" }}>Musicle</h1>
-      <form onSubmit={onSubmit} style={{ border: "red" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center", // Center the text horizontally
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "130px",
+            fontFamily: "Helvetica, Arial, sans-serif",
+            textAlign: "center", // Center the text horizontally
+          }}
+        >
+          Musicle
+        </h1>
+        <img
+          src="https://i.ibb.co/cYsr5jx/DALL-E-2023-07-19-22-11-24-can-you-make-its-color-instead-of-yellow-the-rgb-value-of-69-208-255.png"
+          alt="Musicle Logo"
+          style={{ width: "100px", height: "100px", marginLeft: "25px" }}
+        />
+      </div>
+      <form onSubmit={onSubmit}>
         <div
           style={{
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <input
             value={search}
             onChange={onChange}
+            placeholder="Search for any Band or Artist!"
             style={{
               width: "650px",
               height: "35px",
-              marginBottom: "10px",
+              marginBottom: "20px",
               borderRadius: "5px",
+              textAlign: "center",
+              border: "none",
             }}
           />
         </div>
-        <button
+        <div
           style={{
-            backgroundColor: "rgb(40,40,40)", // Set the background color
-            color: "white", // Set the text color
-            padding: "10px 75px", // Adjust padding for spacing
-            borderRadius: "5px", // Add rounded corners
-            fontSize: "16px", // Adjust font size
-            cursor: "pointer", // Change the cursor on hover
-            marginRight: "2px",
-            // border: "none", // Remove default border
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-          className="home-buttons"
-          type="submit"
         >
-          Search!
-        </button>
-        <button
-          style={{
-            backgroundColor: "rgb(40,40,40)", // Set the background color
-            color: "white", // Set the text color
-            padding: "10px 75px", // Adjust padding for spacing
-            borderRadius: "5px", // Add rounded corners
-            fontSize: "16px", // Adjust font size
-            cursor: "pointer", // Change the cursor on hover
-            // border: "none",
-          }}
-          className="home-buttons"
-          onClick={handleRandom}
-        >
-          Random Artist
-        </button>
+          <button
+            style={{
+              width: "250px", // Set the width for both buttons
+              backgroundColor: "rgb(40,40,40)", // Set the background color
+              color: "white", // Set the text color
+              padding: "10px", // Adjust padding for spacing
+              borderRadius: "5px", // Add rounded corners
+              fontSize: "16px", // Adjust font size
+              cursor: "pointer", // Change the cursor on hover
+              marginRight: "40px",
+              transition: "background-color 0.3s", // Adding a smooth transition
+              border: "none", // Remove default border
+            }}
+            className="home-buttons"
+            type="submit"
+            onMouseOver={(e) =>
+              (e.target.style.backgroundColor = "rgb(69, 208, 255)")
+            }
+            onMouseOut={(e) =>
+              (e.target.style.backgroundColor = "rgb(40, 40, 40)")
+            }
+          >
+            Search!
+          </button>
+          <button
+            style={{
+              width: "250px", // Set the width for both buttons
+              backgroundColor: "rgb(40,40,40)", // Set the background color
+              color: "white", // Set the text color
+              padding: "10px", // Adjust padding for spacing
+              borderRadius: "5px", // Add rounded corners
+              fontSize: "16px", // Adjust font size
+              cursor: "pointer", // Change the cursor on hover
+              transition: "background-color 0.3s", // Adding a smooth transition
+              border: "none",
+            }}
+            className="home-buttons"
+            onClick={handleRandom}
+            onMouseOver={(e) =>
+              (e.target.style.backgroundColor = "rgb(69, 208, 255)")
+            }
+            onMouseOut={(e) =>
+              (e.target.style.backgroundColor = "rgb(40, 40, 40)")
+            }
+          >
+            Random Artist
+          </button>
+        </div>
       </form>
     </div>
   );
