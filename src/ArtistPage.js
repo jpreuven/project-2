@@ -55,7 +55,7 @@ export default function ArtistPage({ data, setData, handleRandom }) {
   }, [count]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/comments`)
+    fetch(`http://localhost:3001/comments`)
       .then((r) => r.json())
       .then((d) => {
         let artistList = d.filter((comment) => {
@@ -108,13 +108,13 @@ export default function ArtistPage({ data, setData, handleRandom }) {
 
   function handleSubmitComment(e) {
     e.preventDefault();
-
+  
     const newObj = {
       comment: commentInput,
       artistID: Number(data.idArtist),
     };
-
-    fetch(`http://localhost:3000/comments`, {
+  
+    fetch(`http://localhost:3001/comments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -125,7 +125,7 @@ export default function ArtistPage({ data, setData, handleRandom }) {
       .then((data) => {
         setCommentSection([...commentSection, data]);
       });
-
+  
     setCommentInput("");
   }
 
@@ -133,10 +133,29 @@ export default function ArtistPage({ data, setData, handleRandom }) {
     return <p key={comment.id}>{comment.comment}</p>;
   });
 
+  const buttonStyle = {
+    background: "rgb(40, 40, 40)",
+    color: "white",
+    padding: "10px 75px",
+    border: "none",
+    borderRadius: "5px",
+    fontSize: "16px",
+    cursor: "pointer",
+    margin: "10px", // Adjust the margin as needed
+    transition: "background-color 0.3s ease", // Adding transition for the hover effect
+  };
+
+  const buttonHoverStyle = {
+    background: "rgb(69, 208, 255)", // Change the background color on hover
+  };
+
+  const [isHovered, setIsHovered] = useState(false);
+  
   return data ? (
     <div
       style={{
         background: "	rgb(20,20,20)",
+        height:"100vh",
       }}
     >
       <h1>{data.strArtist}</h1>
@@ -160,12 +179,19 @@ export default function ArtistPage({ data, setData, handleRandom }) {
         </div>
       </div>
       <form onSubmit={handleSubmitComment}>
-        <textarea
-          className="comment-input"
-          value={commentInput}
-          onChange={(e) => setCommentInput(e.target.value)}
-        ></textarea>
-        <button type="submit">Submit Comment</button>
+  <textarea
+    className="comment-input"
+    value={commentInput}
+    onChange={(e) => setCommentInput(e.target.value)}
+  ></textarea>
+  <button
+    style={{ ...buttonStyle, ...(isHovered ? buttonHoverStyle : {}) }}
+    type="submit"
+    onMouseEnter={() => setIsHovered(true)}
+    onMouseLeave={() => setIsHovered(false)}
+  >
+    Submit Comment
+  </button>
       </form>
       <div className="comment-section">
         <strong>Comment Section</strong>
@@ -173,9 +199,16 @@ export default function ArtistPage({ data, setData, handleRandom }) {
       </div>
     </div>
   ) : (
-    <div>
-      <h1>It appears something has gone wrong...</h1>
-      <button onClick={onClick}>Try again!</button>
+    <div style={{ height: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+    <h1 style={{ marginBottom: "20px" }}>It appears something has gone wrong...</h1>
+    <button
+      style={{ ...buttonStyle, ...(isHovered ? buttonHoverStyle : {}) }}
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      Try again!
+    </button>
     </div>
   );
 }

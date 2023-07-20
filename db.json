@@ -44,6 +44,26 @@
       "comment": "Woo! I love daft punk!",
       "artistID": 111492,
       "id": 9
+    },
+    {
+      "comment": "they are the best!",
+      "artistID": 111492,
+      "id": 10
+    },
+    {
+      "comment": "they are awesome!\n",
+      "artistID": 139305,
+      "id": 11
+    },
+    {
+      "comment": "TEST",
+      "artistID": 139305,
+      "id": 12
+    },
+    {
+      "comment": "TEST",
+      "artistID": 134864,
+      "id": 13
     }
   ]
 }

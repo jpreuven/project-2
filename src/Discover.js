@@ -30,8 +30,8 @@ export default function Discover() {
   return (
     <div
       style={{
-        background: "	rgb(20,20,20)",
-        height: isLoading ? "250vh" : "700vh",
+       // background: "	rgb(20,20,20)",
+       // height: isLoading ? "250vh" : "700vh",
       }}
     >
       <h1 className="header">Current Trending:</h1>
