@@ -39,6 +39,11 @@
       "comment": "hello?",
       "artistID": 111235,
       "id": 8
+    },
+    {
+      "comment": "Woo! I love daft punk!",
+      "artistID": 111492,
+      "id": 9
     }
   ]
 }
