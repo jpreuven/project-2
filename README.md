@@ -1,4 +1,4 @@
-# Phase 2 Project "Musicle" - Jonahthan and Kyle
+# Phase 2 Project "Musicle" - Jonathan and Kyle
 
 ## Available Scripts
 
