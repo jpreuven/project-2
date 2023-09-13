@@ -1,24 +1,38 @@
-# Phase 2 Project "Musicle" - Jonathan and Kyle
+# Musicle - Music Library Database
+## Description
 
-## Available Scripts
+Musicle is a music library database project that allows users to search for their favorite artists or bands and view relevant information about them. While Musicle currently provides basic functionality for searching and exploring artists, there are many opportunities for future enhancements and features with the right resources.
 
-In the project directory, you can run:
-### `npm start`
+## Getting Started
+To run this project locally, you can use the following scripts:
+• `npm start`: Runs the app in development mode. Open http://localhost:3000 to view it in your browser.
+•	`json-server --watch db.json --port 3001`: Runs the JSON server to manage comments.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Please note that the page may reload when you make changes, and you may also see error messages in the console.
 
-### `json-server --watch db.json --port 3001` 
-runs the json server to manage comments
+## Authors
+•	Kyle Kibbe
+•	Jonathan Paul-Reuven
 
-The page will reload when you make changes.\
-You may also see any list errors in the console.
+## Visuals
 
-###
-Musicle is site that is essentially a music library database that at this time allows users to search for a Artist or Band name and see a page with relevent information.
-
-There was plans to add more features and functionality but the api that is currently being implemented is not sufficient to make these implementations. 
-
-Some future goals with the right resources could be implementing a integrated player to listen to music, adding ability to search for artists based on genre/not have the search be limited to exact matches, and having more information available on aritst/track/album pages overall. 
+![image](https://github.com/jpreuven/project-2/assets/74999391/b233631a-1c39-47a6-aa0c-f4df96ad8253)
+![image](https://github.com/jpreuven/project-2/assets/74999391/0e1ff5e5-a366-46d5-81ba-d15ae8ac6802)
+![image](https://github.com/jpreuven/project-2/assets/74999391/113a97a8-86cd-458b-8f42-bb659464d6e1)
+![image](https://github.com/jpreuven/project-2/assets/74999391/44621ed6-a0dc-4290-a532-0350ec9120f2)
+![image](https://github.com/jpreuven/project-2/assets/74999391/96e8bf96-79af-40ca-8320-643e3e84e36a)
 
 
+## Features
+• **Artist Search:** Users can search for artists or bands by name and view detailed information about them.
+
+• **Comment System:** Musicle includes a comment system where users can leave comments about their favorite artists.
+
+## Future Goals
+While Musicle offers a solid foundation, there are plans for future improvements:
+
+• **Integrated Music Player:** Adding an integrated music player to allow users to listen to music from their favorite artists.
+• **Enhanced Search:** Expanding the search functionality to include searching by genre and providing better search results.
+• **More Information:** Increasing the amount of information available on artist, track, and album pages to provide a richer user experience.
+
+Feel free to make any additional modifications or additions to the README as needed. This README provides a starting point for your project's documentation on GitHub. If you have any specific questions or if there's anything else you'd like to include, please let me know!
