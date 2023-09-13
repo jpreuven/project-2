@@ -20,7 +20,6 @@ Please note that the page may reload when you make changes, and you may also see
 ![image](https://github.com/jpreuven/project-2/assets/74999391/0e1ff5e5-a366-46d5-81ba-d15ae8ac6802)
 ![image](https://github.com/jpreuven/project-2/assets/74999391/113a97a8-86cd-458b-8f42-bb659464d6e1)
 ![image](https://github.com/jpreuven/project-2/assets/74999391/44621ed6-a0dc-4290-a532-0350ec9120f2)
-![image](https://github.com/jpreuven/project-2/assets/74999391/96e8bf96-79af-40ca-8320-643e3e84e36a)
 
 
 ## Features
